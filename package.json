@@ -1,4 +1,64 @@
 {
-    "name" : "repository-provider-test-support",
-    "module" : "src/util.mjs"
+  "name": "repository-provider-test-support",
+  "version": "0.0.0-semantic-release",
+  "type": "module",
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "src/util.mjs",
+  "module": "src/util.mjs",
+  "description": "test support for repository providers",
+  "keywords": [
+    "repository-provider"
+  ],
+  "contributors": [
+    {
+      "name": "Markus Felten",
+      "email": "markus.felten@gmx.de"
+    }
+  ],
+  "license": "BSD-2-Clause",
+  "scripts": {
+    "cover": "c8 -x 'tests/**/*.mjs' --temp-directory build/tmp ava && c8 report -r lcov -o build/coverage --temp-directory build/tmp",
+    "docs": "documentation readme src/util.mjs --section=API",
+    "lint": "documentation lint src/util.mjs",
+    "test": "ava"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "ava": "^2.4.0",
+    "c8": "^5.0.4",
+    "documentation": "^12.1.2",
+    "esm": "^3.2.25",
+    "semantic-release": "^15.13.24"
+  },
+  "engines": {
+    "node": ">=12.10.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/arlac77/repository-provider-test-support.git"
+  },
+  "bugs": {
+    "url": "https://github.com/arlac77/repository-provider-test-support/issues"
+  },
+  "homepage": "https://github.com/arlac77/repository-provider-test-support#readme",
+  "ava": {
+    "require": [
+      "esm"
+    ],
+    "extensions": [
+      "mjs"
+    ],
+    "babel": false,
+    "compileEnhancements": false,
+    "files": [
+      "tests/*-test.mjs"
+    ]
+  },
+  "template": {
+    "repository": {
+      "url": "https://github.com/arlac77/npm-package-template-esm-only.git"
+    }
+  }
 }
