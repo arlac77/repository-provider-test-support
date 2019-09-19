@@ -1,0 +1,4 @@
+{
+    "name" : "repository-provider-test-support",
+    "module" : "src/util.mjs"
+}
