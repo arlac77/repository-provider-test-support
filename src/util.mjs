@@ -152,7 +152,7 @@ export async function assertCommit(t, repository, entryName = "README.md") {
 
 
 
-async function listGroupsTest(t, provider, pattern, expected) {
+export async function listGroupsTest(t, provider, pattern, expected) {
   const rgs = {};
 
   for await (const rg of provider.repositoryGroups(pattern)) {
