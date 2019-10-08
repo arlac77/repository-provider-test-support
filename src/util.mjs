@@ -153,14 +153,18 @@ export async function listGroupsTest(t, provider, pattern, expected) {
     rgs[rg.name] = rg;
   }
 
-  for (const name of Object.keys(expected)) {
-    const e = expected[name];
-    const g = rgs[name];
+  if (expected === undefined) {
+    t.is(Object.keys(rgs).length, 0);
+  } else {
+    for (const name of Object.keys(expected)) {
+      const e = expected[name];
+      const g = rgs[name];
 
-    t.truthy(g !== undefined, name);
+      t.truthy(g !== undefined, name);
 
-    for (const key of Object.keys(e)) {
-      t.is(g[key], e[key], `${name}.${key}`);
+      for (const key of Object.keys(e)) {
+        t.is(g[key], e[key], `${name}.${key}`);
+      }
     }
   }
 }
@@ -170,4 +174,7 @@ listGroupsTest.title = (
   provider,
   pattern,
   expected
-) => `${providedTitle} '${pattern}' = ${Object.keys(expected)}`.trim();
+) =>
+  `${providedTitle} '${pattern}' = ${
+    expected ? Object.keys(expected) : ""
+  }`.trim();
