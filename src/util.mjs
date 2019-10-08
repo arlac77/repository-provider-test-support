@@ -149,3 +149,22 @@ export async function assertCommit(t, repository, entryName = "README.md") {
     await repository.deleteBranch(branchName);
   }
 }
+
+
+
+async function listGroupsTest(t, provider, pattern, expected) {
+  const rgs = {};
+
+  for await (const rg of provider.repositoryGroups(pattern)) {
+    rgs[rg.name] = rg;
+  }
+
+  console.log(rgs);
+
+  for (const name of Object.keys(expected)) {
+    t.truthy(rgs[name] !== undefined, name);
+  }
+}
+
+listGroupsTest.title = (providedTitle = "list groups", provider, pattern, expected) =>
+  `${providedTitle} '${pattern}' = ${Object.keys(expected)}`.trim();
