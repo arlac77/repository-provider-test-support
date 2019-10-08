@@ -9,11 +9,7 @@ export async function assertBranch(t, branch, fixture, url) {
       t.is(branch.name, fixture.branch, `branch.name ${url}`);
     }
     if (fixture.provider && branch !== undefined) {
-      t.is(
-        branch.provider.constructor,
-        fixture.provider,
-        `provider ${url}`
-      );
+      t.is(branch.provider.constructor, fixture.provider, `provider ${url}`);
     }
   }
 }
@@ -150,8 +146,6 @@ export async function assertCommit(t, repository, entryName = "README.md") {
   }
 }
 
-
-
 export async function listGroupsTest(t, provider, pattern, expected) {
   const rgs = {};
 
@@ -159,12 +153,21 @@ export async function listGroupsTest(t, provider, pattern, expected) {
     rgs[rg.name] = rg;
   }
 
-  console.log(rgs);
-
   for (const name of Object.keys(expected)) {
-    t.truthy(rgs[name] !== undefined, name);
+    const e = expected[name];
+    const g = rgs[name];
+
+    t.truthy(g !== undefined, name);
+
+    for (const key of Object.keys(e)) {
+      t.is(g[key], e[key], `${name}.${key}`);
+    }
   }
 }
 
-listGroupsTest.title = (providedTitle = "list groups", provider, pattern, expected) =>
-  `${providedTitle} '${pattern}' = ${Object.keys(expected)}`.trim();
+listGroupsTest.title = (
+  providedTitle = "list groups",
+  provider,
+  pattern,
+  expected
+) => `${providedTitle} '${pattern}' = ${Object.keys(expected)}`.trim();
