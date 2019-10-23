@@ -13,7 +13,7 @@ export async function listGroupsTest(t, provider, pattern, expected) {
       const e = expected[name];
       const g = rgs[name];
 
-      t.truthy(g !== undefined, `missing expected group ${name} in ${Object.keys(rgs)}`);
+      t.truthy(g !== undefined, `missing expected group ${name} in (${Object.keys(rgs)})`);
 
       for (const key of Object.keys(e)) {
         t.is(g[key], e[key], `${name}.${key}`);
