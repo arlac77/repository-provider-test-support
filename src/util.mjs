@@ -1,6 +1,7 @@
 import { generateBranchName } from "repository-provider";
 import { StringContentEntry } from "content-entry";
 export { listGroupsTest } from "./list-group-test.mjs";
+export { providerTest } from "./provider-test.mjs";
 
 export async function assertBranch(t, branch, fixture, url) {
   if (fixture === undefined) {
