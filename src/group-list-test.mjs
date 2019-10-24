@@ -1,5 +1,5 @@
 
-export async function listGroupsTest(t, provider, pattern, expected) {
+export async function groupListTest(t, provider, pattern, expected) {
   const rgs = {};
 
   for await (const rg of provider.repositoryGroups(pattern)) {
@@ -22,8 +22,8 @@ export async function listGroupsTest(t, provider, pattern, expected) {
   }
 }
 
-listGroupsTest.title = (
-  providedTitle = "list groups",
+groupListTest.title = (
+  providedTitle = "group list",
   provider,
   pattern,
   expected
