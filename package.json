@@ -1,10 +1,11 @@
 {
   "name": "repository-provider-test-support",
   "version": "0.0.0-semantic-release",
-  "type": "module",
   "publishConfig": {
     "access": "public"
   },
+  "sideEffects": false,
+  "type": "module",
   "main": "src/util.mjs",
   "module": "src/util.mjs",
   "description": "test support for repository providers",
@@ -60,6 +61,5 @@
     "repository": {
       "url": "https://github.com/arlac77/npm-package-template-esm-only.git"
     }
-  },
-  "sideEffects": false
+  }
 }
