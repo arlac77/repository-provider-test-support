@@ -53,6 +53,18 @@ export async function assertRepo(t, repository, fixture, url) {
       t.is(repository.id, fixture.id, `repository.id ${url}`);
     }
 
+    if (fixture.isArchived !== undefined) {
+      t.is(repository.isArchived, fixture.isArchived, `repository.isArchived ${url}`);
+    }
+
+    if (fixture.isLocked !== undefined) {
+      t.is(repository.isLocked, fixture.isLocked, `repository.isLocked ${url}`);
+    }
+
+    if (fixture.isDisabled !== undefined) {
+      t.is(repository.isLocked, fixture.isDisabled, `repository.isDisabled ${url}`);
+    }
+
     if (fixture.owner) {
       if (fixture.owner.name !== undefined) {
         t.is(
