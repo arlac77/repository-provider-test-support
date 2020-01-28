@@ -140,7 +140,7 @@ export async function pullRequestLivecycle(t, provider, repoName) {
   t.is(pr.merged, false, "pull request merged");
 
   for await (const p of provider.pullRequestClass.list(repository)) {
-    console.log("LIST", p, pr.equals(p));
+    console.log("LIST", p, p.title, pr.number, p.number, pr.equals(p));
   }
 
   //await pr.decline();
