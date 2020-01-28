@@ -1,13 +1,10 @@
 {
   "name": "repository-provider-test-support",
   "version": "0.0.0-semantic-release",
-  "publishConfig": {
-    "access": "public"
-  },
   "sideEffects": false,
   "type": "module",
-  "main": "src/util.mjs",
-  "module": "src/util.mjs",
+  "main": "src/module.mjs",
+  "module": "src/module.mjs",
   "description": "test support for repository providers",
   "keywords": [
     "repository-provider"
@@ -21,8 +18,8 @@
   "license": "BSD-2-Clause",
   "scripts": {
     "cover": "c8 -x 'tests/**/*' --temp-directory build/tmp ava && c8 report -r lcov -o build/coverage --temp-directory build/tmp",
-    "docs": "documentation readme src/util.mjs --section=API",
-    "lint": "documentation lint src/util.mjs",
+    "docs": "documentation readme src/module.mjs --section=API",
+    "lint": "documentation lint src/module.mjs",
     "test": "ava"
   },
   "devDependencies": {
