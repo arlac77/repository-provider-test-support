@@ -27,10 +27,16 @@ export async function pullRequestLivecycle(t, provider, repoName) {
     t.is(pr.locked, false, "pull request locked");
     t.is(pr.merged, false, "pull request merged");
   
+    let foundInList = false;
+
     for await (const p of provider.pullRequestClass.list(repository)) {
+      if(pr.equals(p)) {
+        foundInList = true;
+      }
       console.log("LIST", p, p.title, pr.number, p.number, pr.equals(p));
     }
-  
+
+    t.true(foundInList,'pr found in list');
     //await pr.decline();
     await source.delete();
   }
