@@ -29,7 +29,7 @@ export async function pullRequestLivecycle(t, provider, repoName) {
   
     let foundInList = false;
 
-    for await (const p of provider.pullRequestClass.list(repository)) {
+    for await (const p of provider.pullRequestClass.list(repository,source,destination)) {
       if(pr.equals(p)) {
         foundInList = true;
       }
@@ -37,6 +37,15 @@ export async function pullRequestLivecycle(t, provider, repoName) {
     }
 
     t.true(foundInList,'pr found in list');
+
+    const pr2 = await provider.pullRequestClass.open(source, destination,{
+      title: `test pr from ${name}`,
+      body: "this is the body\n- a\n- b\n- c"
+    });
+
+    t.truthy(pr2,"can open pr again");
+    t.true(pr2.equals(pr));
+
     //await pr.decline();
     await source.delete();
   }
