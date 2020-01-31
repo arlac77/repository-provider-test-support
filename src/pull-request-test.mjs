@@ -53,6 +53,47 @@ export async function pullRequestLivecycle(t, provider, repoName) {
   await source.delete();
 }
 
+export async function pullRequestList(t, provider, repoName) {
+  const repository = await provider.repository(repoName);
+  const destination = await repository.defaultBranch;
+
+  const sources = await Promise.all(
+    ["pr-test/source-1", "pr-test/source-2"].map(async bn => {
+      const branch = await repository.createBranch(bn);
+      const commit = await branch.commit("message text", [
+        new StringContentEntry("README.md", `file content #${bn}`)
+      ]);
+
+      const pr = await provider.pullRequestClass.open(branch, destination, {
+        title: `test pr from ${bn}`,
+        body: "this is the body\n- a\n- b\n- c"
+      });
+
+      return branch;
+    })
+  );
+
+  let numberOfSources0 = 0;
+
+  for await (const pr of provider.pullRequestClass.list(repository, {
+    source: sources[0]
+  })) {
+    t.is(pr.source, sources[0]);
+    t.is(pr.destination, destination);
+    numberOfSources0++;
+  }
+
+  t.is(numberOfSources0, 1);
+
+  const prs = [];
+
+  for await (const pr of provider.pullRequestClass.list(repository)) {
+    prs.push(pr);
+  }
+
+  t.true(prs.length >= 2);
+}
+
 /**
  * find a new branch name for a given pattern
  * '*' will be replaced by a number
