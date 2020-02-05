@@ -4,6 +4,7 @@ export * from "./repository-list-test.mjs";
 export * from "./provider-test.mjs";
 export * from "./repository-equality-test.mjs";
 export * from "./pull-request-test.mjs";
+export * from "./entry-list-test.mjs";
 
 export async function assertBranch(t, branch, fixture, url) {
   if (fixture === undefined) {
