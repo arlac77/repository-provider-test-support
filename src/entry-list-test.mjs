@@ -26,14 +26,17 @@ export async function entryListTest(t, branch, pattern, entryFixtures) {
         for await (const chunk of stream) {
           chunks.push(chunk);
         }
-        t.true(chunks.join().startsWith(ef.startsWith));
+        t.true(
+          chunks.join().startsWith(ef.startsWith),
+          `startsWith '${entry.name}'`
+        );
       }
     }
   }
 
-  for(const [name,ef] of Object.entries(entryFixtures)) {
-      if(ef.notPresent) {
-          t.falsy(found.get(name), `no entry ${name}`);
-      }
+  for (const [name, ef] of Object.entries(entryFixtures)) {
+    if (ef.notPresent) {
+      t.falsy(found.get(name), `no entry ${name}`);
+    }
   }
 }
