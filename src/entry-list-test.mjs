@@ -14,7 +14,7 @@ export async function entryListTest(t, branch, pattern, entryFixtures) {
 
     if (ef !== undefined) {
       if (ef.isCollection) {
-        t.true(entry.isCollection);
+        t.true(entry.isCollection, `isCollection '${entry.name}'`);
       } else {
         t.true(
           (await entry.getString()).startsWith(ef.startsWith),
