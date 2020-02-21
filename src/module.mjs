@@ -58,7 +58,11 @@ export async function assertRepo(t, repository, fixture, url) {
     }
 
     if (fixture.isArchived !== undefined) {
-      t.is(repository.isArchived, fixture.isArchived, `repository.isArchived ${url}`);
+      t.is(
+        repository.isArchived,
+        fixture.isArchived,
+        `repository.isArchived ${url}`
+      );
     }
 
     if (fixture.isLocked !== undefined) {
@@ -66,7 +70,11 @@ export async function assertRepo(t, repository, fixture, url) {
     }
 
     if (fixture.isDisabled !== undefined) {
-      t.is(repository.isLocked, fixture.isDisabled, `repository.isDisabled ${url}`);
+      t.is(
+        repository.isLocked,
+        fixture.isDisabled,
+        `repository.isDisabled ${url}`
+      );
     }
 
     if (fixture.owner) {
@@ -112,6 +120,17 @@ export async function assertRepo(t, repository, fixture, url) {
         fixture.provider,
         `provider ${url}`
       );
+    }
+
+    if (fixture.entries) {
+      const branch = await repository.branch("master");
+      const entries = new Map();
+      for await (const entry of branch) {
+        entries.add(entry.name, entry);
+      }
+      for (const [name, content] of Object.entries(fixture.entries)) {
+        t.truethy(entries.get(name));
+      }
     }
   }
 }
