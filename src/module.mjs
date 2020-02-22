@@ -126,10 +126,11 @@ export async function assertRepo(t, repository, fixture, url) {
       const branch = await repository.branch("master");
       const entries = new Map();
       for await (const entry of branch) {
-        entries.add(entry.name, entry);
+        entries.set(entry.name, entry);
       }
+
       for (const [name, content] of Object.entries(fixture.entries)) {
-        t.truethy(entries.get(name));
+        t.truthy(entries.get(name), `entry ${name}`);
       }
     }
   }
