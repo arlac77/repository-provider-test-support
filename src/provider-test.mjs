@@ -14,3 +14,13 @@ export async function providerTest(t, provider) {
 
 providerTest.title = (providedTitle = "provider", provider) =>
   `${providedTitle} ${provider.name}`.trim();
+
+
+export async function providerParseNameTest(t, provider, fixtures) {
+  for (const [name, repo] of Object.entries(fixtures)) {
+    t.deepEqual(provider.parseName(name), repo, name);
+  }
+}
+
+providerParseNameTest.title = (providedTitle = "provider name", provider) =>
+  `${providedTitle} ${provider.name}`.trim();
