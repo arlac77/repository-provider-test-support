@@ -25,6 +25,16 @@ export async function assertRepo(t, repository, fixture, url) {
   if (fixture === undefined) {
     t.is(repository, undefined, `no repo at ${url}`);
   } else {
+    t.truthy(repository, `missing repo ${url}`);
+
+    if (fixture.provider) {
+      t.is(
+        repository.provider.constructor,
+        fixture.provider,
+        `provider ${url}`
+      );
+    }
+
     if (fixture.name !== undefined) {
       t.is(repository.name, fixture.name, `repository.name ${url}`);
     }
@@ -112,14 +122,6 @@ export async function assertRepo(t, repository, fixture, url) {
           t.deepEqual(h.events, fh.events, `hooks.events ${url}`);
         }
       }
-    }
-
-    if (fixture.provider) {
-      t.is(
-        repository.provider.constructor,
-        fixture.provider,
-        `provider ${url}`
-      );
     }
 
     if (fixture.entries) {
