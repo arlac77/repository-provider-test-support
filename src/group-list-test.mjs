@@ -1,4 +1,3 @@
-
 export async function groupListTest(t, provider, pattern, expected) {
   const rgs = {};
 
@@ -9,14 +8,16 @@ export async function groupListTest(t, provider, pattern, expected) {
   if (expected === undefined) {
     t.is(Object.keys(rgs).length, 0);
   } else {
-    for (const name of Object.keys(expected)) {
-      const e = expected[name];
+    for (const [name, e] of Object.entries(expected)) {
       const g = rgs[name];
 
-      t.truthy(g !== undefined, `missing expected group ${name} in (${Object.keys(rgs)})`);
+      t.truthy(
+        g !== undefined,
+        `missing expected group ${name} in (${Object.keys(rgs)})`
+      );
 
-      for (const key of Object.keys(e)) {
-        t.is(g[key], e[key], `${name}.${key}`);
+      for (const [key, ee] of Object.entries(e)) {
+        t.is(g[key], ee, `${name}.${key}`);
       }
     }
   }
