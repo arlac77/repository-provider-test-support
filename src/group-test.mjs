@@ -40,20 +40,13 @@ export async function groupTest(t, provider, name, expected) {
   if (expected === undefined) {
     t.is(rg, undefined);
   } else {
-    for (const [name, e] of Object.entries(expected)) {
-      t.truthy(
-        rg !== undefined,
-        `missing expected group ${name}`
-      );
-
-      for (const [key, ee] of Object.entries(e)) {
-        t.is(g[key], ee, `${name}.${key}`);
+      for (const [key, value] of Object.entries(expected)) {
+        t.is(rg[key], value, `${key}`);
       }
-    }
   }
 }
 
-groupTest.title = (providedTitle = "group", provider, pattern, expected) =>
-  `${providedTitle} '${pattern}' = ${
+groupTest.title = (providedTitle = "group", provider, name, expected) =>
+  `${providedTitle} '${name}' = ${
     expected ? Object.keys(expected) : ""
   }`.trim();
