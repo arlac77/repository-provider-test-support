@@ -1,7 +1,7 @@
 import { StringContentEntry } from "content-entry";
 import { generateBranchName } from "./util.mjs";
 
-export * from "./group-list-test.mjs";
+export * from "./group-test.mjs";
 export * from "./repository-list-test.mjs";
 export * from "./provider-test.mjs";
 export * from "./repository-equality-test.mjs";

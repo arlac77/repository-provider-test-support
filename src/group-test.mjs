@@ -32,3 +32,28 @@ groupListTest.title = (
   `${providedTitle} '${pattern}' = ${
     expected ? Object.keys(expected) : ""
   }`.trim();
+
+
+export async function groupTest(t, provider, name, expected) {
+  const rg = await provider.repositoryGroup(name);
+
+  if (expected === undefined) {
+    t.is(rg, undefined);
+  } else {
+    for (const [name, e] of Object.entries(expected)) {
+      t.truthy(
+        rg !== undefined,
+        `missing expected group ${name}`
+      );
+
+      for (const [key, ee] of Object.entries(e)) {
+        t.is(g[key], ee, `${name}.${key}`);
+      }
+    }
+  }
+}
+
+groupTest.title = (providedTitle = "group", provider, pattern, expected) =>
+  `${providedTitle} '${pattern}' = ${
+    expected ? Object.keys(expected) : ""
+  }`.trim();
