@@ -9,8 +9,7 @@ export async function repositoryListTest(t, provider, pattern, expected) {
   if (expected === undefined) {
     t.is(Object.keys(rs).length, 0);
   } else {
-    for (const name of Object.keys(expected)) {
-      const e = expected[name];
+    for (const [name,e] of Object.entries(expected)) {
       const r = rs[name];
 
       t.truthy(r !== undefined, `missing expected repository ${name} in (${Object.keys(rs)})`);
