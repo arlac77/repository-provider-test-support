@@ -6,8 +6,13 @@ export async function repositoryListTest(t, provider, pattern, expected) {
     rs[r.name] = r;
   }
 
+  if(typeof expected === 'number') {
+    t.truthy(expected < Object.keys(rs).length, `expected at least ${expected} but got only ${Object.keys(rs).length} entries for ${pattern}`);
+    return;
+  }
+
   if (expected === undefined) {
-    t.is(Object.keys(rs).length, 0);
+    t.is(Object.keys(rs).length, 0, `there should not by any repository for ${pattern}`);
   } else {
     for (const [name,e] of Object.entries(expected)) {
       const r = rs[name];
@@ -27,6 +32,6 @@ repositoryListTest.title = (
   pattern,
   expected
 ) =>
-  `${providedTitle} '${pattern}' = ${
-    expected ? Object.keys(expected) : ""
+  `${providedTitle} '${pattern}' ${
+    typeof expected === 'number' ? ">#" + expected : expected ? "("+Object.keys(expected)+')' : "none"
   }`.trim();
