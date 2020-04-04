@@ -33,5 +33,5 @@ repositoryListTest.title = (
   expected
 ) =>
   `${providedTitle} ${pattern===undefined?'undefined':'"'+pattern+'"'} ${
-    typeof expected === 'number' ? ">#" + expected : expected ? "["+Object.keys(expected)+']' : "none"
+    typeof expected === 'number' ? ">#" + expected : expected ? "["+Object.keys(expected)+']' : "not present"
   }`.trim();
