@@ -27,7 +27,7 @@ export async function assertRepo(t, repository, fixture, url) {
   if (fixture === undefined) {
     t.is(repository, undefined, `no repo at ${url}`);
   } else {
-    t.truthy(repository, `missing repo ${url}`);
+    t.truthy(repository, `missing repo '${url}'`);
 
     if (fixture.provider) {
       t.is(
