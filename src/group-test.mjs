@@ -5,6 +5,11 @@ export async function groupListTest(t, provider, pattern, expected) {
     rgs[rg.name] = rg;
   }
 
+  if(typeof expected === 'number') {
+    t.truthy(expected == Object.keys(rgs).length, `expected at least ${expected} but got ${Object.keys(rgs).length} entries for ${pattern}`);
+    return;
+  }
+
   if (expected === undefined) {
     t.is(Object.keys(rgs).length, 0);
   } else {
@@ -30,7 +35,7 @@ groupListTest.title = (
   expected
 ) =>
   `${providedTitle} '${pattern}' = ${
-    expected ? Object.keys(expected) : ""
+    typeof expected === 'number' ? "#" + expected : expected ? "["+Object.keys(expected)+']' : "not present"
   }`.trim();
 
 
