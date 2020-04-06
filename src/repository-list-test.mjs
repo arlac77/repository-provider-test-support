@@ -3,7 +3,7 @@ export async function repositoryListTest(t, provider, pattern, expected) {
   const rs = {};
 
   for await (const r of provider.repositories(pattern)) {
-    rs[r.name] = r;
+    rs[r.fullName] = r;
   }
 
   if(typeof expected === 'number') {
