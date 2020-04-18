@@ -1,4 +1,3 @@
-
 export async function repositoryListTest(t, provider, pattern, expected) {
   const rs = {};
 
@@ -6,18 +5,31 @@ export async function repositoryListTest(t, provider, pattern, expected) {
     rs[r.fullName] = r;
   }
 
-  if(typeof expected === 'number') {
-    t.truthy(expected < Object.keys(rs).length, `expected at least ${expected} but got only ${Object.keys(rs).length} entries for ${pattern}`);
+  if (typeof expected === "number") {
+    t.truthy(
+      expected < Object.keys(rs).length,
+      `expected at least ${expected} but got only ${
+        Object.keys(rs).length
+      } entries for ${pattern}`
+    );
     return;
   }
 
   if (expected === undefined) {
-    t.is(Object.keys(rs).length, 0, `there should not by any repository for ${pattern}`);
+    t.is(
+      Object.keys(rs).length,
+      0,
+      `there should not by any repository for ${pattern}`
+    );
   } else {
-    for (const [name,e] of Object.entries(expected)) {
-      const r = rs[name];
+    for (const [name, e] of Object.entries(expected)) {
+      const normalizedName = provider.normalizeRepositoryName(name);
+      const r = rs[normalizedName];
 
-      t.truthy(r !== undefined, `missing expected repository ${name} in (${Object.keys(rs)})`);
+      t.truthy(
+        r !== undefined,
+        `missing expected repository ${name} in (${Object.keys(rs)})`
+      );
 
       for (const key of Object.keys(e)) {
         t.is(r[key], e[key], `${name}.${key}`);
@@ -32,6 +44,12 @@ repositoryListTest.title = (
   pattern,
   expected
 ) =>
-  `${providedTitle} ${pattern===undefined?'undefined':'"'+pattern+'"'} ${
-    typeof expected === 'number' ? ">#" + expected : expected ? "["+Object.keys(expected)+']' : "not present"
+  `${providedTitle} ${
+    pattern === undefined ? "undefined" : '"' + pattern + '"'
+  } ${
+    typeof expected === "number"
+      ? ">#" + expected
+      : expected
+      ? "[" + Object.keys(expected) + "]"
+      : "not present"
   }`.trim();
