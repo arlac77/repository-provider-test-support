@@ -23,7 +23,7 @@ export async function repositoryListTest(t, provider, pattern, expected) {
     );
   } else {
     for (const [name, e] of Object.entries(expected)) {
-      const normalizedName = provider.normalizeRepositoryName(name);
+      const normalizedName = provider.normalizeRepositoryName(name,true);
       const r = rs[normalizedName];
 
       t.truthy(
