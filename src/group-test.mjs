@@ -2,7 +2,9 @@ export async function groupListTest(t, provider, pattern, expected) {
   const rgs = {};
 
   for await (const rg of provider.repositoryGroups(pattern)) {
-    rgs[rg.name] = rg;
+    const normalizedName = provider.normalizeGroupName(rg.name,true);
+    //console.log(rg.name,normalizedName);
+    rgs[normalizedName] = rg;
   }
 
   if(typeof expected === 'number') {
@@ -40,7 +42,8 @@ groupListTest.title = (
 
 
 export async function groupTest(t, provider, name, expected) {
-  const rg = await provider.repositoryGroup(name);
+  const normalizedName = provider.normalizeGroupName(name,true);
+  const rg = await provider.repositoryGroup(normalizedName);
 
   if (expected === undefined) {
     t.is(rg, undefined);
