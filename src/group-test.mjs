@@ -2,13 +2,16 @@ export async function groupListTest(t, provider, pattern, expected) {
   const rgs = {};
 
   for await (const rg of provider.repositoryGroups(pattern)) {
-    const normalizedName = provider.normalizeGroupName(rg.name,true);
-    //console.log(rg.name,normalizedName);
-    rgs[normalizedName] = rg;
+    rgs[rg.name] = rg;
   }
 
-  if(typeof expected === 'number') {
-    t.truthy(expected == Object.keys(rgs).length, `expected at least ${expected} but got ${Object.keys(rgs).length} entries for ${pattern}`);
+  if (typeof expected === "number") {
+    t.truthy(
+      expected == Object.keys(rgs).length,
+      `expected at least ${expected} but got ${
+        Object.keys(rgs).length
+      } entries for ${pattern}`
+    );
     return;
   }
 
@@ -36,21 +39,24 @@ groupListTest.title = (
   pattern,
   expected
 ) =>
-  `${providedTitle} '${pattern}' = ${
-    typeof expected === 'number' ? "#" + expected : expected ? "["+Object.keys(expected)+']' : "not present"
+  `${provider.name} ${providedTitle} '${pattern}' = ${
+    typeof expected === "number"
+      ? "#" + expected
+      : expected
+      ? "[" + Object.keys(expected) + "]"
+      : "not present"
   }`.trim();
 
-
 export async function groupTest(t, provider, name, expected) {
-  const normalizedName = provider.normalizeGroupName(name,true);
+  const normalizedName = provider.normalizeGroupName(name, true);
   const rg = await provider.repositoryGroup(normalizedName);
 
   if (expected === undefined) {
     t.is(rg, undefined);
   } else {
-      for (const [key, value] of Object.entries(expected)) {
-        t.is(rg[key], value, `${key}`);
-      }
+    for (const [key, value] of Object.entries(expected)) {
+      t.is(rg[key], value, `${key}`);
+    }
   }
 }
 
