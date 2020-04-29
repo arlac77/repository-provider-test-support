@@ -4,7 +4,6 @@
   "sideEffects": false,
   "type": "module",
   "main": "src/module.mjs",
-  "module": "src/module.mjs",
   "description": "test support for repository providers",
   "keywords": [
     "repository-provider"
