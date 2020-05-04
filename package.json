@@ -3,9 +3,9 @@
   "version": "0.0.0-semantic-release",
   "sideEffects": false,
   "type": "module",
-  "main": "src/module.mjs",
+  "main": "./src/module.mjs",
   "exports": {
-    ".": "src/module.mjs",
+    ".": "./src/module.mjs",
     "./": "./"
   },
   "description": "test support for repository providers",
@@ -22,8 +22,8 @@
   "scripts": {
     "test": "ava --timeout 2m",
     "cover": "c8 -x 'tests/**/*' --temp-directory build/tmp ava --timeout 2m && c8 report -r lcov -o build/coverage --temp-directory build/tmp",
-    "docs": "documentation readme src/module.mjs --section=API",
-    "lint": "documentation lint src/module.mjs"
+    "docs": "documentation readme ./src/module.mjs --section=API",
+    "lint": "documentation lint ./src/module.mjs"
   },
   "dependencies": {
     "content-entry": "^2.2.6"
