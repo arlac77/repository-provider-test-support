@@ -35,7 +35,7 @@
     "semantic-release": "^17.0.7"
   },
   "peerDependencies": {
-    "repository-provider": "^18.2.0"
+    "repository-provider": "^18.3.0"
   },
   "engines": {
     "node": ">=12.16.3"
