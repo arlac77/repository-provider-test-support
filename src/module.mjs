@@ -13,7 +13,7 @@ export async function assertBranch(t, branch, fixture, url) {
   if (fixture === undefined) {
     t.is(branch, undefined, `no branch at ${url}`);
   } else {
-//    t.truthy(branch, `missing branch ${url}`);
+    //    t.truthy(branch, `missing branch ${url}`);
 
     if (fixture.branch !== undefined) {
       t.is(branch.name, fixture.branch, `branch.name ${url}`);
@@ -30,6 +30,21 @@ export async function assertRepo(t, repository, fixture, url) {
   } else {
     t.truthy(repository, `missing repo '${url}'`);
 
+    for (const [name, e] of Object.entries(fixture)) {
+      if (name === "branch" || name === "owner" || name === "hooks" || name === "entries") continue;
+
+      const r = repository[name];
+
+      t.truthy(
+        r !== undefined,
+        `missing expected repository ${name} in (${Object.keys(repository)}) ${url}`
+      );
+
+      for (const key of Object.keys(e)) {
+        t.is(r[key], e[key], `${name}.${key} ${url}`);
+      }
+    }
+    /*
     if (fixture.provider) {
       t.is(
         repository.provider.constructor,
@@ -89,6 +104,7 @@ export async function assertRepo(t, repository, fixture, url) {
         `repository.isDisabled ${url}`
       );
     }
+*/
 
     if (fixture.owner) {
       if (fixture.owner.name !== undefined) {
