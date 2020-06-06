@@ -2,7 +2,7 @@ export async function groupListTest(t, provider, pattern, expected) {
   const rgs = {};
 
   for await (const rg of provider.repositoryGroups(pattern)) {
-    rgs[rg.name] = rg;
+    rgs[rg.provider.name + '/' +rg.name] = rg;
   }
 
   if (typeof expected === "number") {
