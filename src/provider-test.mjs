@@ -2,8 +2,10 @@ export async function providerTest(t, provider) {
   t.is(provider.provider, provider, "be our own provider");
   t.truthy(provider.name, "has a name");
 
+  /*
   const repositoryGroup = await provider.repositoryGroup();
   t.is(repositoryGroup, undefined, "undefined repositoryGroup");
+*/
 
   const repository = await provider.repository();
   t.is(repository, undefined, "undefined repository");
