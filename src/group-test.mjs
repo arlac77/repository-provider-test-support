@@ -1,8 +1,14 @@
-export async function groupListTest(t, provider, pattern, expected) {
+export async function groupListTest(
+  t,
+  provider,
+  pattern,
+  expected,
+  withProviderName = false
+) {
   const rgs = {};
 
   for await (const rg of provider.repositoryGroups(pattern)) {
-    rgs[rg.provider.name + '/' +rg.name] = rg;
+    rgs[withProviderName ? rg.provider.name + "/" + rg.name : rg.name] = rg;
   }
 
   if (typeof expected === "number") {
