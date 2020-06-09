@@ -1,9 +1,9 @@
 
-export async function branchListTest(t, provider, pattern, expected) {
+export async function branchListTest(t, provider, pattern, expected, withProviderName=false) {
     const rs = {};
   
     for await (const r of provider.branches(pattern)) {
-      rs[r.fullCondensedName] = r;
+      rs[withProviderName ? r.provider.name + '/' + r.fullCondensedName : r.fullCondensedName] = r;
     }
   
     if(typeof expected === 'number') {
