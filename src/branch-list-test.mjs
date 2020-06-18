@@ -3,11 +3,12 @@ export async function branchListTest(t, provider, pattern, expected, withProvide
     const rs = {};
   
     for await (const r of provider.branches(pattern)) {
+      console.log(r.name);
       rs[withProviderName ? r.provider.name + '/' + r.fullCondensedName : r.fullCondensedName] = r;
     }
   
     if(typeof expected === 'number') {
-      t.truthy(expected < Object.keys(rs).length, `expected at least ${expected} but got only ${Object.keys(rs).length} entries for ${pattern}`);
+      t.truthy(expected <= Object.keys(rs).length, `expected at least ${expected} but got only ${Object.keys(rs).length} entries for ${pattern}`);
       return;
     }
   
