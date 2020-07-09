@@ -80,7 +80,7 @@ export async function pullRequestList(t, provider, repoName) {
     source: sources[0]
   })) {
     t.is(pr.source, sources[0], "source");
-    t.is(pr.destination, destination, "destination");
+    t.is(pr.destination, destination, `destination: ${destination.fullName}`);
     t.is(pr.title, "test pr from pr-test/source-1", "title");
     t.false(pr.locked, "locked");
 
