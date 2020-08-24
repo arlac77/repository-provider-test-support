@@ -34,10 +34,10 @@
     "semantic-release": "^17.1.1"
   },
   "peerDependencies": {
-    "repository-provider": "^23.6.1"
+    "repository-provider": "^23.6.5"
   },
   "engines": {
-    "node": ">=12.18.2"
+    "node": ">=12.18.3"
   },
   "repository": {
     "type": "git",
