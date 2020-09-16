@@ -37,7 +37,7 @@ export async function pullRequestLivecycle(t, provider, repoName) {
     if (pr.equals(p)) {
       foundInList = true;
     }
-    console.log("LIST", p, p.title, pr.number, p.number, pr.equals(p));
+    //console.log("LIST", p, p.title, pr.number, p.number, pr.equals(p));
   }
 
   t.true(foundInList, "pr found in list");
