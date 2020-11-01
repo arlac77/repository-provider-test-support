@@ -3,7 +3,6 @@ export async function branchListTest(t, provider, pattern, expected, withProvide
     const rs = {};
   
     for await (const r of provider.branches(pattern)) {
-      console.log(r.identifier);
       rs[withProviderName ? r.provider.name + '/' + r.fullCondensedName : r.fullCondensedName] = r;
     }
   
