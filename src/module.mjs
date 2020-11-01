@@ -31,80 +31,29 @@ export async function assertRepo(t, repository, fixture, url) {
     t.truthy(repository, `missing repo '${url}'`);
 
     for (const [name, e] of Object.entries(fixture)) {
-      if (name === "branch" || name === "owner" || name === "hooks" || name === "entries") continue;
-
       const r = repository[name];
+
+      switch (name) {
+        case "branch":
+        case "owner":
+        case "hooks":
+        case "entries":
+          continue;
+          break;
+        case "provider":
+          t.true(r instanceof e);
+          continue;
+      }
 
       t.truthy(
         r !== undefined,
-        `missing expected repository ${name} in (${Object.keys(repository)}) ${url}`
+        `missing expected repository ${name} in (${Object.keys(
+          repository
+        )}) ${url}`
       );
 
-      for (const key of Object.keys(e)) {
-        t.is(r[key], e[key], `${name}.${key} ${url}`);
-      }
+      t.is(e, r, `${e} ${url}`);
     }
-    /*
-    if (fixture.provider) {
-      t.is(
-        repository.provider.constructor,
-        fixture.provider,
-        `provider ${url}`
-      );
-    }
-
-    if (fixture.name !== undefined) {
-      t.is(repository.name, fixture.name, `repository.name ${url}`);
-    }
-
-    if (fixture.fullName !== undefined) {
-      t.is(repository.fullName, fixture.fullName, `repository.fullName ${url}`);
-    }
-
-    if (fixture.condensedName !== undefined) {
-      t.is(
-        repository.condensedName,
-        fixture.condensedName,
-        `repository.condensedName ${url}`
-      );
-    }
-
-    if (fixture.description !== undefined) {
-      t.is(
-        repository.description,
-        fixture.description,
-        `repository.description ${url}`
-      );
-    }
-
-    if (fixture.uuid !== undefined) {
-      t.is(repository.uuid, fixture.uuid, `repository.uuid ${url}`);
-    }
-
-    if (fixture.id !== undefined) {
-      t.is(repository.id, fixture.id, `repository.id ${url}`);
-    }
-
-    if (fixture.isArchived !== undefined) {
-      t.is(
-        repository.isArchived,
-        fixture.isArchived,
-        `repository.isArchived ${url}`
-      );
-    }
-
-    if (fixture.isLocked !== undefined) {
-      t.is(repository.isLocked, fixture.isLocked, `repository.isLocked ${url}`);
-    }
-
-    if (fixture.isDisabled !== undefined) {
-      t.is(
-        repository.isLocked,
-        fixture.isDisabled,
-        `repository.isDisabled ${url}`
-      );
-    }
-*/
 
     if (fixture.owner) {
       if (fixture.owner.name !== undefined) {
