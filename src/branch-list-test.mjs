@@ -34,6 +34,6 @@ export async function branchListTest(t, provider, pattern, expected, withProvide
     expected
   ) =>
     `${providedTitle} ${pattern===undefined?'undefined':'"'+pattern+'"'} ${
-      typeof expected === 'number' ? ">#" + expected : expected ? "["+Object.keys(expected)+']' : "not present"
+      typeof expected === 'number' ? ">=#" + expected : expected ? "["+Object.keys(expected)+']' : "not present"
     }`.trim();
   
