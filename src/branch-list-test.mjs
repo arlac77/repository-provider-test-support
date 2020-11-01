@@ -7,7 +7,8 @@ export async function branchListTest(t, provider, pattern, expected, withProvide
     }
   
     if(typeof expected === 'number') {
-      t.truthy(expected < Object.keys(rs).length, `expected at least ${expected} but got only ${Object.keys(rs).length} entries for ${pattern}`);
+      const length = Object.keys(rs).length;
+      t.truthy(expected <= length, `expected at least ${expected} but got only ${length} entries for ${pattern}`);
       return;
     }
   
