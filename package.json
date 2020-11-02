@@ -27,7 +27,7 @@
     "lint:docs": "documentation lint ./src/module.mjs"
   },
   "dependencies": {
-    "content-entry": "^2.5.0"
+    "content-entry": "^2.5.1"
   },
   "devDependencies": {
     "ava": "^3.13.0",
