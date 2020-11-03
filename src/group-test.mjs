@@ -45,7 +45,9 @@ groupListTest.title = (
   pattern,
   expected
 ) =>
-  `${provider.name} ${providedTitle} '${pattern}' = ${
+  `${provider.name} ${providedTitle} ${
+    pattern === undefined ? "undefined" : "'" + pattern + "'"
+  } = ${
     typeof expected === "number"
       ? "#" + expected
       : expected
@@ -67,6 +69,6 @@ export async function groupTest(t, provider, name, expected) {
 }
 
 groupTest.title = (providedTitle = "group", provider, name, expected) =>
-  `${providedTitle} '${name}' = ${
-    expected ? Object.keys(expected) : ""
+  `${providedTitle} ${name === undefined ? 'undefined' : "'"+name+"'"} = ${
+    expected ? Object.keys(expected) : "empty"
   }`.trim();
