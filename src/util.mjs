@@ -12,7 +12,6 @@ export async function generateBranchName(repository, pattern) {
       n++;
     }
   
-    const name = pattern.replace(/\*/, n);
-    return name;
+    return pattern.replace(/\*/, n);
   }
   

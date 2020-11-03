@@ -5,7 +5,7 @@ export * from "./group-test.mjs";
 export * from "./repository-list-test.mjs";
 export * from "./branch-list-test.mjs";
 export * from "./provider-test.mjs";
-export * from "./repository-equality-test.mjs";
+export * from "./repository-test.mjs";
 export * from "./pull-request-test.mjs";
 export * from "./entry-list-test.mjs";
 
