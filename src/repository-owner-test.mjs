@@ -2,7 +2,7 @@ function quote(names) {
   return names === undefined
     ? "undefined"
     : Array.isArray(names)
-    ? "[" + names.map(n => "'" + n + "'").join(",") + "]"
+    ? "[" + names.sort().map(n => "'" + n + "'").join(",") + "]"
     : "'" + names + "'";
 }
 
