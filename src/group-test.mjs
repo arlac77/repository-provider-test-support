@@ -5,6 +5,8 @@ export async function groupListTest(
   expected,
   withProviderName = false
 ) {
+  t.truthy(provider, "provider present");
+
   const rgs = {};
 
   for await (const rg of provider.repositoryGroups(pattern)) {
