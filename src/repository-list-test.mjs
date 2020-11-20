@@ -1,6 +1,8 @@
 export async function repositoryListTest(t, provider, pattern, expected) {
   const rs = {};
 
+  t.truthy(provider, "provider present");
+
   for await (const r of provider.repositories(pattern)) {
     rs[r.fullName] = r;
   }
