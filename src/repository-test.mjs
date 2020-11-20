@@ -10,7 +10,7 @@ export async function repositoryEqualityTest(t, p1, rn1, rn2) {
 repositoryEqualityTest.title = (
   providedTitle = "repository equality",
   provider
-) => `${providedTitle} ${provider.name}`.trim();
+) => `${providedTitle} ${provider ? provider.name : 'undefined'}`.trim();
 
 export async function repositoryLivecycleTest(
   t,
@@ -18,6 +18,7 @@ export async function repositoryLivecycleTest(
   repoName = "test-repo-1",
   groupName
 ) {
+  t.truthy(provider, "provider is present");
   const group = await provider.repositoryGroup(groupName);
 
   t.log("group found");
