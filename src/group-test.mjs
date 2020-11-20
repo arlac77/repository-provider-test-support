@@ -45,7 +45,7 @@ groupListTest.title = (
   pattern,
   expected
 ) =>
-  `${provider.name} ${providedTitle} ${
+  `${provider ? provider.name: 'undefined'} ${providedTitle} ${
     pattern === undefined ? "undefined" : "'" + pattern + "'"
   } = ${
     typeof expected === "number"
