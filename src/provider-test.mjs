@@ -15,7 +15,7 @@ export async function providerTest(t, provider) {
 }
 
 providerTest.title = (providedTitle = "provider", provider) =>
-  `${providedTitle} ${provider.name}`.trim();
+  `${providedTitle} ${provider ? provider.name: 'undefined'}`.trim();
 
 
 export async function providerParseNameTest(t, provider, fixtures) {
@@ -25,4 +25,4 @@ export async function providerParseNameTest(t, provider, fixtures) {
 }
 
 providerParseNameTest.title = (providedTitle = "provider name", provider) =>
-  `${providedTitle} ${provider.name}`.trim();
+  `${providedTitle} ${provider ? provider.name : 'undefined'}`.trim();
