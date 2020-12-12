@@ -30,7 +30,7 @@
     "lint:docs": "documentation lint ./src/module.mjs"
   },
   "dependencies": {
-    "content-entry": "^2.6.0"
+    "content-entry": "^2.6.1"
   },
   "devDependencies": {
     "ava": "^3.14.0",
