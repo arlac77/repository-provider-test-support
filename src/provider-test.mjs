@@ -15,8 +15,7 @@ export async function providerTest(t, provider) {
 }
 
 providerTest.title = (providedTitle = "provider", provider) =>
-  `${providedTitle} ${provider ? provider.name: 'undefined'}`.trim();
-
+  `${providedTitle} ${provider ? provider.name : "undefined"}`.trim();
 
 export async function providerParseNameTest(t, provider, fixtures) {
   for (const [name, repo] of Object.entries(fixtures)) {
@@ -25,4 +24,27 @@ export async function providerParseNameTest(t, provider, fixtures) {
 }
 
 providerParseNameTest.title = (providedTitle = "provider name", provider) =>
-  `${providedTitle} ${provider ? provider.name : 'undefined'}`.trim();
+  `${providedTitle} ${provider ? provider.name : "undefined"}`.trim();
+
+export async function providerOptionsFromEnvironmentTest(
+  t,
+  factory,
+  env,
+  expected,
+  areOptionsSufficcient = true
+) {
+  const oFromEnv = factory.optionsFromEnvironment(env);
+  t.deepEqual(oFromEnv, expected, "optionsFromEnvironment");
+  t.is(
+    factory.areOptionsSufficcient(oFromEnv),
+    areOptionsSufficcient,
+    "areOptionsSufficcient"
+  );
+}
+
+providerOptionsFromEnvironmentTest.title = (
+  providedTitle = "optionsFromEnvironment",
+  factory,
+  env,
+  expected
+) => `${providedTitle} ${factory.name} ${JSON.stringify(env)}`.trim();
