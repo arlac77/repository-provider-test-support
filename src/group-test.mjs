@@ -58,8 +58,8 @@ groupListTest.title = (
   }`.trim();
 
 export async function groupTest(t, provider, name, expected) {
-  const normalizedName = provider.normalizeGroupName(name, true);
-  const rg = await provider.repositoryGroup(normalizedName);
+//  const normalizedName = provider.normalizeGroupName(name, true);
+  const rg = await provider.repositoryGroup(name);
 
   if (expected === undefined) {
     t.is(rg, undefined);
