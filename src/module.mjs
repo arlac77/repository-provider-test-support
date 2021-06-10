@@ -116,6 +116,7 @@ export async function assertCommit(t, repository, entryName = "README.md") {
       new StringContentEntry(entryName, `file content #${branchName}`)
     ]);
 
+    t.truthy(commit, "commit present");
     t.is(commit.ref, `refs/heads/${branchName}`);
   } finally {
     await repository.deleteBranch(branchName);
