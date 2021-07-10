@@ -11,6 +11,8 @@ export * from "./repository-test.mjs";
 export * from "./pull-request-test.mjs";
 export * from "./entry-list-test.mjs";
 
+export const REPOSITORY_NAME = "arlac77/sync-test-repository";
+
 export async function assertBranch(t, branch, fixture, url) {
   if (fixture === undefined) {
     t.is(branch, undefined, `no branch at ${url}`);
