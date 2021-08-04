@@ -15,7 +15,7 @@ export async function pullRequestLivecycle(t, provider, repoName) {
     new StringContentEntry("README.md", `file content #${name}`)
   ]);
 
-  const pr = await provider.pullRequestClass.open(source, destination, {
+  const pr = await repository.pullRequestClass.open(source, destination, {
     title: `test pr from ${name}`,
     body: "this is the body\n- a\n- b\n- c"
   });
@@ -32,7 +32,7 @@ export async function pullRequestLivecycle(t, provider, repoName) {
 
   let foundInList = false;
 
-  for await (const p of provider.pullRequestClass.list(repository, {
+  for await (const p of repository.pullRequestClass.list(repository, {
     source,
     destination
   })) {
@@ -44,7 +44,7 @@ export async function pullRequestLivecycle(t, provider, repoName) {
 
   t.true(foundInList, "pr found in list");
 
-  const pr2 = await provider.pullRequestClass.open(source, destination, {
+  const pr2 = await repository.pullRequestClass.open(source, destination, {
     title: `test pr from ${name}`,
     body: "this is the body\n- a\n- b\n- c"
   });
@@ -69,7 +69,7 @@ export async function pullRequestList(t, provider, repoName) {
         new StringContentEntry("README.md", `file content #${bn}`)
       ]);
 
-      const pr = await provider.pullRequestClass.open(branch, destination, {
+      const pr = await repository.pullRequestClass.open(branch, destination, {
         title: `test pr from ${bn}`,
         body: "this is the body\n- a\n- b\n- c"
       });
@@ -80,7 +80,7 @@ export async function pullRequestList(t, provider, repoName) {
 
   let numberOfSources0 = 0;
 
-  for await (const pr of provider.pullRequestClass.list(repository, {
+  for await (const pr of repository.pullRequestClass.list(repository, {
     source: sources[0]
   })) {
     t.is(pr.source, sources[0], "source");
@@ -95,7 +95,7 @@ export async function pullRequestList(t, provider, repoName) {
 
   const prs = [];
 
-  for await (const pr of provider.pullRequestClass.list(repository)) {
+  for await (const pr of repository.pullRequestClass.list(repository)) {
     prs.push(pr);
   }
 
