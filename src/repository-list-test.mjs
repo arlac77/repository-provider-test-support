@@ -43,9 +43,7 @@ repositoryListTest.title = (
   pattern,
   expected
 ) =>
-  `${providedTitle} ${
-    pattern === undefined ? "undefined" : '"' + pattern + '"'
-  } ${
+  `${providedTitle} ${JSON.stringify(pattern)} ${
     typeof expected === "number"
       ? ">=#" + expected
       : expected
