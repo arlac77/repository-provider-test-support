@@ -13,7 +13,7 @@ export async function branchListTest(t, provider, pattern, expected, withProvide
     }
   
     if (expected === undefined) {
-      t.is(Object.keys(rs).length, 0, `there should not by any branch for ${pattern}`);
+      t.is(Object.keys(rs).length, 0, `there should not be any branch for ${pattern}`);
     } else {
       for (const [name,e] of Object.entries(expected)) {
         const r = rs[name];
