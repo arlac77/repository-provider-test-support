@@ -10,6 +10,7 @@ export * from "./provider-test.mjs";
 export * from "./repository-test.mjs";
 export * from "./pull-request-test.mjs";
 export * from "./entry-list-test.mjs";
+export * from "./messages.mjs";
 
 export const REPOSITORY_NAME = "arlac77/sync-test-repository";
 
