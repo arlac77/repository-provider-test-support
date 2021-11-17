@@ -5,6 +5,8 @@ export async function entryListTest(t, branch, pattern, entryFixtures) {
       Object.values(entryFixtures).filter(e => e.startsWith).length * 2
   );
 
+  t.truthy(branch, "missing branch");
+  
   const found = new Map();
 
   for await (const entry of branch.entries(pattern)) {
