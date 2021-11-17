@@ -2,11 +2,12 @@ export async function entryListTest(t, branch, pattern, entryFixtures) {
   t.plan(
     Object.values(entryFixtures).filter(e => e.isCollection).length +
       Object.values(entryFixtures).filter(e => e.notPresent).length +
-      Object.values(entryFixtures).filter(e => e.startsWith).length * 2
+      Object.values(entryFixtures).filter(e => e.startsWith).length * 2 +
+      1
   );
 
   t.truthy(branch, "missing branch");
-  
+
   const found = new Map();
 
   for await (const entry of branch.entries(pattern)) {
