@@ -19,7 +19,7 @@ export async function repositoryListTest(t, provider, pattern, expected) {
     t.is(
       Object.keys(rs).length,
       0,
-      `there should not by any repository for ${pattern}`
+      `there should not by any repository for \"${pattern}\"`
     );
   } else {
     for (const [name, e] of Object.entries(expected)) {
