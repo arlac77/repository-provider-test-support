@@ -11,6 +11,7 @@ export * from "./repository-test.mjs";
 export * from "./pull-request-test.mjs";
 export * from "./entry-list-test.mjs";
 export * from "./messages.mjs";
+export * from "./repositories.mjs";
 
 export const REPOSITORY_NAME = "arlac77/sync-test-repository";
 export const REPOSITORY_NAME_GITHUB_HTTP = `https://github.com/${REPOSITORY_NAME}.git`;
