@@ -20,7 +20,7 @@ export async function entryListTest(t, branch, pattern, entryFixtures) {
         t.true(entry.isCollection, `isCollection '${entry.name}'`);
       } else {
         t.true(
-          (await entry.getString()).startsWith(ef.startsWith),
+          (await entry.string).startsWith(ef.startsWith),
           `${entry.name} '${ef.startsWith}'`
         );
 
