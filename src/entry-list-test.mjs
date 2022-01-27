@@ -19,20 +19,25 @@ export async function entryListTest(t, branch, pattern, entryFixtures) {
       if (ef.isCollection) {
         t.true(entry.isCollection, `isCollection '${entry.name}'`);
       } else {
-        t.true(
-          (await entry.string).startsWith(ef.startsWith),
-          `${entry.name} '${ef.startsWith}'`
-        );
+        if (ef.startsWith) {
+          t.true(
+            (await entry.string).startsWith(ef.startsWith),
+            `${entry.name} '${ef.startsWith}'`
+          );
 
-        const stream = await entry.getReadStream();
-        const chunks = [];
-        for await (const chunk of stream) {
-          chunks.push(chunk);
+          const stream = await entry.readStream();
+          const chunks = [];
+          for await (const chunk of stream) {
+            chunks.push(chunk);
+          }
+          t.true(
+            chunks.join().startsWith(ef.startsWith),
+            `startsWith '${entry.name}'`
+          );
         }
-        t.true(
-          chunks.join().startsWith(ef.startsWith),
-          `startsWith '${entry.name}'`
-        );
+        if (ef.mode) {
+          t.is(entry.mode, ef.mode, `mode '${entry.name}'`);
+        }
       }
     }
   }
