@@ -25,7 +25,7 @@ export async function entryListTest(t, branch, pattern, entryFixtures) {
             `${entry.name} '${ef.startsWith}'`
           );
 
-          const stream = await entry.readStream();
+          const stream = await entry.readStream;
           const chunks = [];
           for await (const chunk of stream) {
             chunks.push(chunk);
