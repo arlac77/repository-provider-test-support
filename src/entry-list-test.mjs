@@ -3,6 +3,7 @@ export async function entryListTest(t, branch, pattern, entryFixtures) {
     Object.values(entryFixtures).filter(e => e.isCollection).length +
       Object.values(entryFixtures).filter(e => e.notPresent).length +
       Object.values(entryFixtures).filter(e => e.startsWith).length * 2 +
+      Object.values(entryFixtures).filter(e => e.mode).length +
       1
   );
 
