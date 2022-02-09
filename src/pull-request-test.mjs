@@ -78,7 +78,7 @@ export async function pullRequestList(t, provider, repoName) {
     })
   );
 
-  let numberOfSources0 = 0;
+  let numberOfSources = 0;
 
   for await (const pr of repository.pullRequestClass.list(repository, {
     source: sources[0]
@@ -88,10 +88,10 @@ export async function pullRequestList(t, provider, repoName) {
     t.is(pr.title, "test pr from pr-test/source-1", "title");
     t.false(pr.locked, "locked");
 
-    numberOfSources0++;
+    numberOfSources++;
   }
 
-  t.is(numberOfSources0, 1);
+  t.is(numberOfSources, 1);
 
   const prs = [];
 
