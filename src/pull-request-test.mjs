@@ -5,6 +5,7 @@ export async function pullRequestLivecycle(t, provider, repoName) {
   t.truthy(provider, "provider present");
 
   const repository = await provider.repository(repoName);
+  t.truthy(repository, `repsitory present ${repoName}`);
 
   const name = await generateBranchName(repository, "pr-test/*");
 
@@ -60,6 +61,8 @@ export async function pullRequestList(t, provider, repoName) {
   t.truthy(provider, "provider present");
 
   const repository = await provider.repository(repoName);
+  t.truthy(repository, `repsitory present ${repoName}`);
+  
   const destination = await repository.defaultBranch;
 
   const sources = await Promise.all(
