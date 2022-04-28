@@ -12,16 +12,7 @@ export * from "./pull-request-test.mjs";
 export * from "./entry-list-test.mjs";
 export * from "./messages.mjs";
 export * from "./repositories.mjs";
-
-
-export const REPOSITORY_NAME = "arlac77/sync-test-repository";
-export const REPOSITORY_NAME_GITHUB_HTTP = `https://github.com/${REPOSITORY_NAME}.git`;
-export const REPOSITORY_NAME_GITHUB_GIT = `git@github.com:${REPOSITORY_NAME}.git`;
-export const REPOSITORY_NAME_WITH_BRANCH = REPOSITORY_NAME + "#preserve-for-test";
-export const REPOSITORY_NAME_WITH_BRANCH_GITHUB_HTTP = REPOSITORY_NAME_GITHUB_HTTP + "#preserve-for-test";
-export const REPOSITORY_NAME_WITH_BRANCH_GITHUB_GIT = REPOSITORY_NAME_GITHUB_GIT + "#preserve-for-test";
-
-export const BITBUCKET_REPOSITORY_NAME = REPOSITORY_NAME;
+export * from "./constants.mjs";
 
 export async function assertBranch(t, branch, fixture, url) {
   if (fixture === undefined) {
