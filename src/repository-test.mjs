@@ -21,20 +21,19 @@ export async function repositoryLivecycleTest(
   assert = async (t, repository) => {}
 ) {
   t.truthy(provider, "provider is present");
-  const group = await provider.repositoryGroup(groupName);
 
-  t.log("group found");
+  const group = await provider.repositoryGroup(groupName);
+  t.truthy(group, "group found");
 
   let repo = await group.repository(repoName);
   if (repo) {
     await repo.delete();
+    t.log("repo cleared");
   }
-
-  t.log("repo cleared");
 
   repo = await group.createRepository(repoName, options);
 
-  t.log("repo created");
+  t.truthy(repo, "repo created");
 
   t.is(repo.name, repoName, "repository name");
 
