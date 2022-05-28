@@ -1,3 +1,4 @@
+export const REPOSITORY_OWNER = "arlac77";
 export const REPOSITORY_NAME = "arlac77/sync-test-repository";
 export const REPOSITORY_NAME_GITHUB_HTTP = `https://github.com/${REPOSITORY_NAME}.git`;
 export const REPOSITORY_NAME_GITHUB_GIT = `git@github.com:${REPOSITORY_NAME}.git`;
