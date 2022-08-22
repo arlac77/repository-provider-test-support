@@ -30,8 +30,8 @@ find a new branch name for a given pattern
 
 ### Parameters
 
-*   `repository` **Repository** 
-*   `pattern` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** 
+*   `repository` **Repository**&#x20;
+*   `pattern` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)**&#x20;
 
 # install
 
