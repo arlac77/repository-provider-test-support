@@ -42,7 +42,8 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   finish:
-    needs: test-node
+    needs:
+      - test-node
     runs-on: ubuntu-latest
     steps:
       - name: Coveralls Finished
