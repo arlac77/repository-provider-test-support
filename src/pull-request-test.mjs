@@ -86,10 +86,12 @@ export async function pullRequestList(t, provider, repoName) {
 
   let numberOfSources = 0;
 
+  const source = sources[0];
+
   for await (const pr of repository.pullRequestClass.list(repository, {
-    source: sources[0]
+    source
   })) {
-    t.is(pr.source, sources[0], "source");
+    t.is(pr.source, source, `source: ${source.fullName}`);
     t.is(pr.destination, destination, `destination: ${destination.fullName}`);
     t.is(pr.title, "test pr from pr-test/source-1", "title");
     t.false(pr.locked, "locked");
