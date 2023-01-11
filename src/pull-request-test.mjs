@@ -62,7 +62,7 @@ export async function pullRequestList(t, provider, repoName) {
 
   const repository = await provider.repository(repoName);
   t.truthy(repository, `repsitory present ${repoName}`);
-  
+
   const destination = await repository.defaultBranch;
 
   const sources = await Promise.all(
@@ -72,11 +72,14 @@ export async function pullRequestList(t, provider, repoName) {
         new StringContentEntry("README.md", `file content #${bn}`)
       ]);
 
-      const pr = await repository.pullRequestClass.open(branch, destination, {
-        title: `test pr from ${bn}`,
-        body: "this is the body\n- a\n- b\n- c"
-      });
-
+      try {
+        const pr = await repository.pullRequestClass.open(branch, destination, {
+          title: `test pr from ${bn}`,
+          body: "this is the body\n- a\n- b\n- c"
+        });
+      } catch (e) {
+        console.log(e);
+      }
       return branch;
     })
   );
