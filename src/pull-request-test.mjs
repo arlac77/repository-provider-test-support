@@ -94,7 +94,7 @@ export async function pullRequestList(t, provider, repoName) {
     numberOfSources++;
   }
 
-  t.is(numberOfSources, 1);
+  t.is(numberOfSources, 1, "number of sources");
 
   const prs = [];
 
