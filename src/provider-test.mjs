@@ -1,8 +1,8 @@
 export async function providerTest(t, provider) {
   t.is(provider.provider, provider, "be our own provider");
   t.truthy(provider.name, "has a name");
-  t.truthy(provider.fullName, "has a fullName");
-  t.truthy(provider.url, "has a url");
+  t.truthy(provider.fullName, `${provider.name} has a fullName`);
+  t.truthy(provider.url, `${provider.name} has a url`);
 
   /*
   const repositoryGroup = await provider.repositoryGroup();
