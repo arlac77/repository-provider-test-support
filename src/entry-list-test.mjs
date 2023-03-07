@@ -1,3 +1,5 @@
+import { streamToString } from "browser-stream-util";
+
 export async function entryListTest(t, branch, pattern, entryFixtures) {
   t.plan(
     Object.values(entryFixtures).filter(e => e.isCollection).length +
@@ -27,14 +29,23 @@ export async function entryListTest(t, branch, pattern, entryFixtures) {
           );
 
           const stream = await entry.readStream;
-          const chunks = [];
-          for await (const chunk of stream) {
-            chunks.push(chunk);
+
+          if (stream instanceof ReadableStream) {
+            const string = await streamToString(stream);
+            t.true(
+              string.startsWith(ef.startsWith),
+              `startsWith '${entry.name}'`
+            );
+          } else {
+            const chunks = [];
+            for await (const chunk of stream) {
+              chunks.push(chunk);
+            }
+            t.true(
+              chunks.join().startsWith(ef.startsWith),
+              `startsWith '${entry.name}'`
+            );
           }
-          t.true(
-            chunks.join().startsWith(ef.startsWith),
-            `startsWith '${entry.name}'`
-          );
         }
         if (ef.mode) {
           t.is(entry.mode, ef.mode, `mode '${entry.name}'`);
