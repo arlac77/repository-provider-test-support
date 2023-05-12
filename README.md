@@ -1,6 +1,6 @@
 [![npm](https://img.shields.io/npm/v/repository-provider-test-support.svg)](https://www.npmjs.com/package/repository-provider-test-support)
 [![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
-[![Open Bundle](https://bundlejs.com/badge-light.svg)](https://bundlejs.com/?q=repository-provider-test-support)
+[![bundlejs](https://deno.bundlejs.com/?q=repository-provider-test-support\&badge=detailed)](https://bundlejs.com/?q=repository-provider-test-support)
 [![downloads](http://img.shields.io/npm/dm/repository-provider-test-support.svg?style=flat-square)](https://npmjs.org/package/repository-provider-test-support)
 [![GitHub Issues](https://img.shields.io/github/issues/arlac77/repository-provider-test-support.svg?style=flat-square)](https://github.com/arlac77/repository-provider-test-support/issues)
 [![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Farlac77%2Frepository-provider-test-support%2Fbadge\&style=flat)](https://actions-badge.atrox.dev/arlac77/repository-provider-test-support/goto)
