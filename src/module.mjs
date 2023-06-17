@@ -5,6 +5,7 @@ export * from "./group-test.mjs";
 export * from "./repository-list-test.mjs";
 export * from "./repository-owner-test.mjs";
 export * from "./branch-list-test.mjs";
+export * from "./branch-test.mjs";
 export * from "./tag-list-test.mjs";
 export * from "./provider-test.mjs";
 export * from "./repository-test.mjs";
