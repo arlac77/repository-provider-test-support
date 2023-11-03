@@ -93,7 +93,11 @@ export async function assertRepo(t, repository, fixture, url) {
           t.is(h.id, fh.id, `hooks.id ${url}`);
           t.is(h.url, fh.url, `hooks.url ${url}`);
           t.is(h.active, fh.active, `hooks.active ${url}`);
-          t.deepEqual(h.events, fh.events, `hooks.events ${url}`);
+          t.deepEqual(
+            [...h.events].sort(),
+            [...fh.events].sort(),
+            `hooks.events ${url}`
+          );
         }
       }
     }
