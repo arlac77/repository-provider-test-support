@@ -34,7 +34,7 @@
     "ava": "^5.3.1",
     "c8": "^8.0.1",
     "documentation": "^14.0.2",
-    "repository-provider": "^34.0.0",
+    "repository-provider": "^34.0.1",
     "semantic-release": "^22.0.7"
   },
   "engines": {
