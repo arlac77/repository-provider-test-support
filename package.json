@@ -28,7 +28,7 @@
     "lint:docs": "documentation lint ./src/**/*.mjs"
   },
   "dependencies": {
-    "browser-stream-util": "^1.1.0",
+    "browser-stream-util": "^1.2.0",
     "content-entry": "^6.0.0"
   },
   "devDependencies": {
