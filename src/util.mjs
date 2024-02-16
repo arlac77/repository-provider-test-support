@@ -1,4 +1,7 @@
-import { Repository } from "repository-provider";
+
+/**
+ * @typedef {import('repository-provider').Repository} Repository
+ */
 
 /**
  * find a new branch name for a given pattern
