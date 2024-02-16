@@ -21,6 +21,15 @@ test support for repository providers
 
 *   [generateBranchName](#generatebranchname)
     *   [Parameters](#parameters)
+*   [generateBranchName](#generatebranchname-1)
+    *   [Parameters](#parameters-1)
+
+## generateBranchName
+
+### Parameters
+
+*   `repository` &#x20;
+*   `pattern` &#x20;
 
 ## generateBranchName
 
