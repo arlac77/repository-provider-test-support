@@ -1,3 +1,5 @@
+import { Repository } from "repository-provider";
+
 /**
  * find a new branch name for a given pattern
  * '*' will be replaced by a number
@@ -12,6 +14,6 @@ export async function generateBranchName(repository, pattern) {
       n++;
     }
   
-    return pattern.replace(/\*/, n);
+    return pattern.replace(/\*/, String(n));
   }
   
