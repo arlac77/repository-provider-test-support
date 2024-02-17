@@ -5,13 +5,13 @@
     "access": "public",
     "provenance": true
   },
+  "types": "./types/module.d.mts",
   "exports": {
     ".": {
       "default": "./src/module.mjs",
       "types": "./types/module.d.mts"
     }
   },
-  "types": "./types/module.d.mts",
   "description": "test support for repository providers",
   "keywords": [
     "repository-provider"
