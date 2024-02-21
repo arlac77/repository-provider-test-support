@@ -35,7 +35,7 @@
   },
   "dependencies": {
     "browser-stream-util": "^1.2.0",
-    "content-entry": "^6.0.0"
+    "content-entry": "^9.0.0"
   },
   "devDependencies": {
     "ava": "^6.1.1",
