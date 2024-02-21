@@ -107,5 +107,5 @@ export async function pullRequestList(t, provider, repoName) {
     prs.push(pr);
   }
 
-  t.true(prs.length >= 2, "more than two PRs");
+  t.true(prs.length >= 2, `more than two PRs ${prs.length}`);
 }
