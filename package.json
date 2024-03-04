@@ -35,13 +35,13 @@
   },
   "dependencies": {
     "browser-stream-util": "^1.2.0",
-    "content-entry": "^9.0.0"
+    "content-entry": "^9.0.1"
   },
   "devDependencies": {
     "ava": "^6.1.2",
     "c8": "^9.1.0",
     "documentation": "^14.0.3",
-    "repository-provider": "^35.2.14",
+    "repository-provider": "^35.2.15",
     "semantic-release": "^23.0.2",
     "typescript": "^5.3.3"
   },
