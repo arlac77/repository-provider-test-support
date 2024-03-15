@@ -43,7 +43,7 @@
     "c8": "^9.1.0",
     "documentation": "^14.0.3",
     "repository-provider": "^35.2.15",
-    "semantic-release": "^23.0.2",
+    "semantic-release": "^23.0.3",
     "typescript": "^5.4.2"
   },
   "engines": {
