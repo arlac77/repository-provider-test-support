@@ -8,8 +8,8 @@
   "types": "./types/module.d.mts",
   "exports": {
     ".": {
-      "default": "./src/module.mjs",
-      "types": "./types/module.d.mts"
+      "types": "./types/module.d.mts",
+      "default": "./src/module.mjs"
     }
   },
   "description": "test support for repository providers",
