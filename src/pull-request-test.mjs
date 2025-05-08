@@ -13,7 +13,7 @@ export async function pullRequestLivecycle(t, provider, repoName) {
   const source = await destination.createBranch(name);
 
   const commit = await source.commit("message text", [
-    new StringContentEntry("README.md", `file content #${name}`)
+    new StringContentEntry("README.md", undefined, `file content #${name}`)
   ]);
 
   const pr = await repository.pullRequestClass.open(source, destination, {
@@ -69,7 +69,7 @@ export async function pullRequestList(t, provider, repoName) {
     ["pr-test/source-1", "pr-test/source-2"].map(async bn => {
       const branch = await repository.createBranch(bn);
       const commit = await branch.commit("message text", [
-        new StringContentEntry("README.md", `file content #${bn}`)
+        new StringContentEntry("README.md", undefined, `file content #${bn}`)
       ]);
 
       try {

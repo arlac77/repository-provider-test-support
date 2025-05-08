@@ -15,7 +15,7 @@ test("entryListTest", t => {
   const branch = new Branch({ _addBranch: () => {} }, "b1");
 
   async function* entries(pattern) {
-    yield new StringContentEntry("a.txt", "line1");
+    yield new StringContentEntry("a.txt", undefined, "line1");
   }
 
   branch.entries = entries;

@@ -121,7 +121,7 @@ export async function assertCommit(t, repository, entryName = "README.md") {
   const branch = await repository.createBranch(branchName);
   try {
     const commit = await branch.commit("message text", [
-      new StringContentEntry(entryName, `file content #${branchName}`)
+      new StringContentEntry(entryName, undefined, `file content #${branchName}`)
     ]);
 
     t.truthy(commit, "commit present");
