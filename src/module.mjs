@@ -32,7 +32,7 @@ export async function assertBranch(t, branch, fixture, url) {
 
 export async function assertRepo(t, repository, fixture, url) {
   if (fixture === undefined) {
-    t.is(repository, undefined, `no repo at ${url}`);
+    t.is(repository, undefined, `ther should be no repo at ${url}`);
   } else {
     t.truthy(repository, `missing repo '${url}'`);
 
