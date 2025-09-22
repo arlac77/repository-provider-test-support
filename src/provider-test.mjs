@@ -4,11 +4,6 @@ export async function providerTest(t, provider) {
   t.truthy(provider.fullName, `${provider.name} has a fullName`);
   t.truthy(provider.url, `${provider.name} has a url`);
 
-  /*
-  const repositoryGroup = await provider.repositoryGroup();
-  t.is(repositoryGroup, undefined, "undefined repositoryGroup");
-*/
-
   const repository = await provider.repository();
   t.is(repository, undefined, "undefined repository");
 
@@ -24,29 +19,6 @@ export async function providerParseNameTest(t, provider, fixtures) {
     t.deepEqual(provider.parseName(name), repo, name);
   }
 }
-
 providerParseNameTest.title = (providedTitle = "provider name", provider) =>
   `${providedTitle} ${provider ? provider.name : "undefined"}`.trim();
 
-export async function providerOptionsFromEnvironmentTest(
-  t,
-  factory,
-  env,
-  expected,
-  areOptionsSufficcient = true
-) {
-  const oFromEnv = factory.optionsFromEnvironment(env);
-  t.deepEqual(oFromEnv, expected, "optionsFromEnvironment");
-  t.is(
-    factory.areOptionsSufficcient(oFromEnv),
-    areOptionsSufficcient,
-    "areOptionsSufficcient"
-  );
-}
-
-providerOptionsFromEnvironmentTest.title = (
-  providedTitle = "optionsFromEnvironment",
-  factory,
-  env,
-  expected
-) => `${providedTitle} ${factory.name} ${JSON.stringify(env)}`.trim();
